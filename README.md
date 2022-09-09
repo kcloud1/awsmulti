@@ -12,7 +12,7 @@ Run as role [checking]
 echo "Using $AWS_PROFILE user"
 aws sts get-caller-identity
 
-subaccount=955192890155
+subaccount=516890729523
 nameOfMyrole=OrganizationAccountAccessRole
 aws_credentials=$(aws sts assume-role --role-arn arn:aws:iam::${subaccount}:role/${nameOfMyrole} --role-session-name "RoleSession1" --output json)
 
@@ -22,6 +22,7 @@ export AWS_SESSION_TOKEN=$(echo $aws_credentials|jq '.Credentials.SessionToken'|
 
 echo "Using $nameOfMyrole Role"
 aws sts get-caller-identity
+echo $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY $AWS_SESSION_TOKEN
 ```
 
 Unset above variables
